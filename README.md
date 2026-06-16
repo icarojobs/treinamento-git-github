@@ -12,6 +12,10 @@
   <em>"Amadores escrevem código. Profissionais versionam código."</em>
 </p>
 
+### VÍDEO NO YOUTUBE
+
+[https://www.youtube.com/watch?v=VPu6xm3W8H0](https://www.youtube.com/watch?v=VPu6xm3W8H0)
+
 ---
 
 ## 🎯 Objetivo
