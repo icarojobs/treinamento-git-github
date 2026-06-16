@@ -1,6 +1,20 @@
-# Treinamento Prático: Git + GitHub para Times de Desenvolvimento
+<h1 align="center">🚀 Treinamento Prático: Git + GitHub</h1>
 
-## Objetivo
+<p align="center"><strong>para Times de Desenvolvimento</strong></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/License-GPLv3-blue?style=for-the-badge" alt="License GPLv3" />
+</p>
+
+<p align="center">
+  <em>"Amadores escrevem código. Profissionais versionam código."</em>
+</p>
+
+---
+
+## 🎯 Objetivo
 
 Ao final deste treinamento, todos os participantes serão capazes de:
 
@@ -8,6 +22,7 @@ Ao final deste treinamento, todos os participantes serão capazes de:
 * Criar e versionar projetos localmente
 * Trabalhar com Branches
 * Realizar Commits de forma profissional
+* Ignorar arquivos com `.gitignore`
 * Sincronizar código com GitHub
 * Criar Pull Requests (PR)
 * Fazer Code Review
@@ -16,9 +31,31 @@ Ao final deste treinamento, todos os participantes serão capazes de:
 
 ---
 
+## 📑 Sumário
+
+| # | Tópico | # | Tópico |
+| --- | --- | --- | --- |
+| [1](#1-o-que-é-git) | O que é Git | [16](#16-push) | Push |
+| [2](#2-o-que-é-github) | O que é GitHub | [17](#17-clone) | Clone |
+| [3](#3-diferença-entre-git-vs-github) | Git vs GitHub | [18](#18-pull) | Pull |
+| [4](#4-fluxo-profissional-de-trabalho) | Fluxo de trabalho | [19](#19-fetch) | Fetch |
+| [5](#5-instalando-o-git) | Instalando o Git | [20](#20-fluxo-profissional-de-branches) | Fluxo de branches |
+| [6](#6-primeiros-passos) | Primeiros passos | [21](#21-padrão-de-commits) | Padrão de commits |
+| [7](#7-criando-o-primeiro-repositório) | Primeiro repositório | [22](#22-pull-request-pr) | Pull Request |
+| [8](#8-entendendo-o-ciclo-do-git) | Ciclo do Git | [23](#23-fluxo-completo-de-pr) | Fluxo completo de PR |
+| [9](#9-primeiro-commit) | Primeiro commit | [24](#24-boas-práticas-de-pr) | Boas práticas de PR |
+| [10](#10-gitignore) | **.gitignore** 🆕 | [25](#25-git-e-ia) | Git + IA |
+| [11](#11-principais-comandos-git) | Principais comandos | [26](#26-como-usar-ia-com-git) | Como usar IA com Git |
+| [12](#12-branches) | Branches | [27](#27-github-trending) | GitHub Trending |
+| [13](#13-merge) | Merge | [28](#28-por-que-olhar-o-trending) | Por que olhar o Trending |
+| [14](#14-conflitos) | Conflitos | [29](#29-laboratório-prático) | Laboratório prático |
+| [15](#15-conectando-ao-github) | Conectando ao GitHub | [30](#30-resumo-final) | Resumo final |
+
+---
+
 # 1. O QUE É GIT?
 
-Git é um Sistema de Controle de Versão Distribuído (DVCS).
+Git é um **Sistema de Controle de Versão Distribuído**.
 
 Em termos simples:
 
@@ -32,21 +69,13 @@ Ele permite:
 * Criar funcionalidades sem quebrar produção
 * Auditar quem alterou o quê
 
----
+### Exemplo
 
-## Exemplo
+Imagine um arquivo `sistema.php`.
 
-Imagine um arquivo:
+Você altera o arquivo hoje. Amanhã ele quebra.
 
-```txt
-sistema.php
-```
-
-Você altera o arquivo hoje.
-
-Amanhã ele quebra.
-
-Com Git você consegue voltar exatamente para o estado anterior.
+Com Git você consegue voltar exatamente para o estado anterior (antes da quebra).
 
 ---
 
@@ -54,39 +83,14 @@ Com Git você consegue voltar exatamente para o estado anterior.
 
 GitHub é uma plataforma online que hospeda repositórios Git.
 
-GitHub NÃO substitui Git.
+> GitHub **NÃO** substitui Git. GitHub **utiliza** Git.
 
-GitHub utiliza Git.
+### Analogia
 
----
-
-## Analogia
-
-Git:
-
-```txt
-Microsoft Word
-```
-
-GitHub:
-
-```txt
-OneDrive
-```
-
-ou
-
-Git:
-
-```txt
-Banco de Dados
-```
-
-GitHub:
-
-```txt
-Servidor onde o banco está hospedado
-```
+| Git | GitHub |
+| --- | --- |
+| Microsoft Word | OneDrive ou Google Drive |
+| Banco de Dados | Servidor onde o banco está hospedado |
 
 ---
 
@@ -104,39 +108,33 @@ Servidor onde o banco está hospedado
 
 # 4. FLUXO PROFISSIONAL DE TRABALHO
 
-```txt
-Desenvolvedor
-      ↓
-Cria Branch
-      ↓
-Desenvolve
-      ↓
-Commit
-      ↓
-Push
-      ↓
-Pull Request
-      ↓
-Code Review
-      ↓
-Merge
-      ↓
-Produção
+```mermaid
+flowchart TD
+    A([Desenvolvedor]) --> B[Cria Branch]
+    B --> C[Desenvolve]
+    C --> D[Commit]
+    D --> E[Push]
+    E --> F[Pull Request]
+    F --> G[Code Review]
+    G --> H[Merge]
+    H --> I([Produção])
 ```
 
 ---
 
 # 5. INSTALANDO O GIT
 
-## Verificar instalação
+O `git` está disponível através do site [https://git-scm.com/install/](https://git-scm.com/install/).
+
+Verificar instalação:
 
 ```bash
 git --version
 ```
 
-Exemplo:
+Exemplo de saída:
 
-```bash
+```txt
 git version 2.52.0
 ```
 
@@ -144,35 +142,21 @@ git version 2.52.0
 
 # 6. PRIMEIROS PASSOS
 
-## Configurar nome
+Configurar nome:
 
 ```bash
 git config --global user.name "Seu Nome"
+git config --global user.name          # verificar
 ```
 
-Verificar:
-
-```bash
-git config user.name
-```
-
----
-
-## Configurar email
+Configurar email:
 
 ```bash
 git config --global user.email "email@empresa.com"
+git config --global user.email         # verificar
 ```
 
-Verificar:
-
-```bash
-git config user.email
-```
-
----
-
-## Listar configurações
+Listar todas as configurações:
 
 ```bash
 git config --list
@@ -182,22 +166,10 @@ git config --list
 
 # 7. CRIANDO O PRIMEIRO REPOSITÓRIO
 
-Criar pasta:
-
 ```bash
-mkdir projeto-git
-```
-
-Entrar:
-
-```bash
-cd projeto-git
-```
-
-Inicializar Git:
-
-```bash
-git init
+mkdir projeto-git    # criar pasta
+cd projeto-git       # entrar
+git init             # inicializar Git
 ```
 
 Resultado:
@@ -210,53 +182,32 @@ Initialized empty Git repository
 
 # 8. ENTENDENDO O CICLO DO GIT
 
-```txt
-Working Directory
-        ↓
-git add
-        ↓
-Staging Area
-        ↓
-git commit
-        ↓
-Repository
+```mermaid
+flowchart LR
+    A[Working Directory] -->|git add| B[Staging Area]
+    B -->|git commit| C[(Repositório Local)]
+    C -->|git push| D[(GitHub)]
 ```
 
 ---
 
 # 9. PRIMEIRO COMMIT
 
-Criar arquivo:
+Criar arquivo e verificar status:
 
 ```bash
 touch README.md
-```
-
-Verificar status:
-
-```bash
 git status
 ```
 
----
-
-Adicionar arquivo:
+Adicionar ao staging:
 
 ```bash
-git add README.md
+git add README.md    # arquivo específico
+git add .            # tudo
 ```
 
----
-
-Adicionar tudo:
-
-```bash
-git add .
-```
-
----
-
-Criar commit:
+Criar o commit:
 
 ```bash
 git commit -m "Primeiro commit"
@@ -264,39 +215,112 @@ git commit -m "Primeiro commit"
 
 ---
 
-# 10. PRINCIPAIS COMANDOS GIT
+# 10. .GITIGNORE
+
+> Nem todo arquivo deve ir para o repositório.
+
+O arquivo `.gitignore` diz ao Git **quais arquivos e pastas devem ser ignorados** — ou seja, nunca rastreados nem enviados ao GitHub.
+
+### Por que usar?
+
+Evita versionar:
+
+* **Dependências** → `node_modules/`, `vendor/`
+* **Segredos** → `.env`, senhas, tokens, chaves
+* **Arquivos gerados** → `build/`, `dist/`, `*.log`
+* **Configuração de IDE** → `.vscode/`, `.idea/`
+* **Arquivos do sistema** → `.DS_Store`, `Thumbs.db`
+
+### Criando o arquivo
+
+```bash
+touch .gitignore
+```
+
+### Sintaxe dos padrões
+
+| Padrão            | Significado                          |
+| ----------------- | ------------------------------------ |
+| `arquivo.log`     | Ignora um arquivo específico         |
+| `*.log`           | Ignora todos os arquivos `.log`      |
+| `pasta/`          | Ignora uma pasta inteira             |
+| `!importante.log` | Exceção: **não** ignora este arquivo |
+| `# comentário`    | Linha de comentário                  |
+
+### Exemplos por tecnologia
+
+**Node.js**
+
+```gitignore
+node_modules/
+.env
+dist/
+*.log
+```
+
+**PHP / Laravel**
+
+```gitignore
+/vendor/
+.env
+storage/*.log
+```
+
+**Python**
+
+```gitignore
+__pycache__/
+*.pyc
+venv/
+.env
+```
+
+### ⚠️ Atenção: arquivo já rastreado
+
+Se o arquivo **já foi commitado**, adicioná-lo ao `.gitignore` não o remove. É preciso tirá-lo do versionamento:
+
+```bash
+git rm --cached arquivo.env
+git commit -m "chore: remove arquivo do versionamento"
+```
+
+### .gitignore global
+
+Para ignorar arquivos em **todos** os projetos da máquina:
+
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+```
+
+### 💡 Dica
+
+Use modelos prontos por linguagem/framework:
+
+* https://github.com/github/gitignore
+* https://gitignore.io
 
 ---
 
-## git status
+# 11. PRINCIPAIS COMANDOS GIT
 
-Mostra o estado atual.
+### git status
+
+Mostra o estado atual. Uso diário.
 
 ```bash
 git status
 ```
 
-Uso diário.
+### git add
 
----
-
-## git add
-
-Adiciona alterações.
+Adiciona alterações ao staging.
 
 ```bash
-git add .
+git add .            # tudo
+git add arquivo.php  # específico
 ```
 
-ou
-
-```bash
-git add arquivo.php
-```
-
----
-
-## git commit
+### git commit
 
 Cria um snapshot.
 
@@ -304,25 +328,16 @@ Cria um snapshot.
 git commit -m "Cadastro de clientes"
 ```
 
----
-
-## git log
+### git log
 
 Histórico.
 
 ```bash
 git log
+git log --oneline    # modo resumido
 ```
 
-Modo resumido:
-
-```bash
-git log --oneline
-```
-
----
-
-## git diff
+### git diff
 
 Mostra alterações.
 
@@ -330,9 +345,7 @@ Mostra alterações.
 git diff
 ```
 
----
-
-## git restore
+### git restore
 
 Desfaz alterações.
 
@@ -340,9 +353,7 @@ Desfaz alterações.
 git restore arquivo.php
 ```
 
----
-
-## git rm
+### git rm
 
 Remove arquivo.
 
@@ -350,9 +361,7 @@ Remove arquivo.
 git rm arquivo.php
 ```
 
----
-
-## git mv
+### git mv
 
 Renomeia arquivo.
 
@@ -362,61 +371,22 @@ git mv antigo.php novo.php
 
 ---
 
-# 11. BRANCHES
+# 12. BRANCHES
 
-## O que é uma Branch?
-
-Uma linha paralela de desenvolvimento.
-
----
-
-Listar:
+Uma branch é uma **linha paralela de desenvolvimento**.
 
 ```bash
-git branch
+git branch                  # listar
+git branch feature/login    # criar
+git checkout feature/login  # trocar
+git checkout -b feature/login   # criar e trocar
+git switch -c feature/login     # alternativa moderna
+git checkout main           # voltar para main
 ```
 
 ---
 
-Criar:
-
-```bash
-git branch feature/login
-```
-
----
-
-Trocar:
-
-```bash
-git checkout feature/login
-```
-
----
-
-Criar e trocar:
-
-```bash
-git checkout -b feature/login
-```
-
-ou
-
-```bash
-git switch -c feature/login
-```
-
----
-
-Voltar para main:
-
-```bash
-git checkout main
-```
-
----
-
-# 12. MERGE
+# 13. MERGE
 
 Unir duas branches.
 
@@ -424,25 +394,23 @@ Unir duas branches.
 git merge feature/login
 ```
 
-Fluxo:
-
-```txt
-main
-  \
-   feature/login
-          |
-          Merge
-          |
-        main
+```mermaid
+gitGraph
+   commit
+   commit
+   branch feature/login
+   checkout feature/login
+   commit
+   commit
+   checkout main
+   merge feature/login
 ```
 
 ---
 
-# 13. CONFLITOS
+# 14. CONFLITOS
 
 Ocorrem quando duas pessoas alteram a mesma linha.
-
-Exemplo:
 
 ```txt
 <<<<<<< HEAD
@@ -452,9 +420,9 @@ Novo Nome
 >>>>>>> feature
 ```
 
-Resolver:
+Como resolver:
 
-1. Editar manualmente
+1. Editar manualmente o arquivo
 2. Salvar
 3. Commitar
 
@@ -465,59 +433,32 @@ git commit
 
 ---
 
-# 14. CONECTANDO AO GITHUB
+# 15. CONECTANDO AO GITHUB
 
-Criar repositório no GitHub.
-
-Copiar URL.
-
-Exemplo:
-
-```txt
-https://github.com/empresa/projeto.git
-```
-
-Adicionar remoto:
+1. Criar repositório no GitHub
+2. Copiar a URL, por exemplo: `https://github.com/empresa/projeto.git`
 
 ```bash
-git remote add origin URL
-```
-
-Verificar:
-
-```bash
-git remote -v
+git remote add origin URL   # adicionar remoto
+git remote -v               # verificar
 ```
 
 ---
 
-# 15. PUSH
+# 16. PUSH
 
-Enviar para GitHub.
-
-Primeira vez:
+Enviar para o GitHub.
 
 ```bash
-git push -u origin main
-```
-
-Próximas vezes:
-
-```bash
-git push
+git push -u origin main   # primeira vez
+git push                  # próximas vezes
 ```
 
 ---
 
-# 16. CLONE
+# 17. CLONE
 
-Baixar projeto.
-
-```bash
-git clone URL
-```
-
-Exemplo:
+Baixar um projeto existente.
 
 ```bash
 git clone https://github.com/empresa/projeto.git
@@ -525,35 +466,28 @@ git clone https://github.com/empresa/projeto.git
 
 ---
 
-# 17. PULL
+# 18. PULL
 
-Baixar alterações.
+Baixar e aplicar alterações.
 
 ```bash
 git pull
-```
-
-Fluxo recomendado:
-
-```bash
-git pull origin main
+git pull origin main   # fluxo recomendado
 ```
 
 ---
 
-# 18. FETCH
+# 19. FETCH
 
-Buscar alterações sem aplicar.
+Buscar alterações **sem aplicar**. Muito utilizado antes de um merge.
 
 ```bash
 git fetch
 ```
 
-Muito utilizado antes de merge.
-
 ---
 
-# 19. FLUXO PROFISSIONAL DE BRANCHES
+# 20. FLUXO PROFISSIONAL DE BRANCHES
 
 Padrão recomendado:
 
@@ -565,22 +499,29 @@ hotfix/*
 release/*
 ```
 
-Exemplos:
+Exemplos: `feature/login`, `feature/cadastro-cliente`, `hotfix/correcao-pix`, `release/v1.3.0`.
 
-```txt
-feature/login
-feature/cadastro-cliente
-
-hotfix/correcao-pix
-
-release/v1.3.0
+```mermaid
+gitGraph
+   commit
+   branch develop
+   checkout develop
+   commit
+   branch feature/login
+   checkout feature/login
+   commit
+   commit
+   checkout develop
+   merge feature/login
+   checkout main
+   merge develop tag: "v1.3.0"
 ```
 
 ---
 
-# 20. PADRÃO DE COMMITS
+# 21. PADRÃO DE COMMITS
 
-Evite:
+❌ Evite:
 
 ```txt
 ajustes
@@ -589,29 +530,21 @@ teste
 update
 ```
 
-Prefira:
+✅ Prefira:
 
 ```txt
 feat: adiciona login por Google
-
 fix: corrige cálculo de comissão
-
 refactor: simplifica regra de descontos
-
 docs: atualiza README
-
 test: adiciona testes de integração
 ```
 
 ---
 
-# 21. PULL REQUEST (PR)
+# 22. PULL REQUEST (PR)
 
-O que é?
-
-Solicitação de merge.
-
-Permite:
+Uma **solicitação de merge**. Permite:
 
 * Revisão
 * Discussão
@@ -620,380 +553,160 @@ Permite:
 
 ---
 
-# 22. FLUXO COMPLETO DE PR
+# 23. FLUXO COMPLETO DE PR
 
-## Passo 1
+```mermaid
+flowchart TD
+    A[Atualizar main] --> B[Criar branch]
+    B --> C[Desenvolver]
+    C --> D[Commit]
+    D --> E[Push]
+    E --> F[Abrir Pull Request]
+    F --> G[Code Review]
+    G --> H{Aprovado?}
+    H -->|Não| C
+    H -->|Sim| I[Merge]
+    I --> J[Deletar branch]
+```
 
-Atualizar main
+**Passo a passo:**
 
 ```bash
+# 1. Atualizar main
 git checkout main
 git pull
-```
 
----
-
-## Passo 2
-
-Criar branch
-
-```bash
+# 2. Criar branch
 git checkout -b feature/login
-```
 
----
+# 3. Desenvolver
+# ...
 
-## Passo 3
-
-Desenvolver
-
----
-
-## Passo 4
-
-Commit
-
-```bash
+# 4. Commit
 git add .
 git commit -m "feat: adiciona autenticação"
-```
 
----
-
-## Passo 5
-
-Push
-
-```bash
+# 5. Push
 git push origin feature/login
 ```
 
----
-
-## Passo 6
-
-Abrir Pull Request
-
-GitHub:
-
-```txt
-Compare & Pull Request
-```
+6. Abrir Pull Request no GitHub (**Compare & Pull Request**)
+7. **Code Review** — analisar código, performance, segurança e padrões
+8. **Approve Changes**
+9. **Merge Pull Request**
+10. **Delete Branch**
 
 ---
 
-## Passo 7
+# 24. BOAS PRÁTICAS DE PR
 
-Code Review
+| Tamanho da PR  | Recomendação              |
+| -------------- | ------------------------- |
+| Até 150 linhas | ✅ Ideal                   |
+| Até 300 linhas | 🟡 Aceitável              |
+| Acima disso    | 🔴 Quebrar em PRs menores |
 
-Analisar:
-
-* Código
-* Performance
-* Segurança
-* Padrões
-
----
-
-## Passo 8
-
-Approve
-
-```txt
-Approve Changes
-```
+Sempre incluir: **Objetivo**, **Impacto**, **Evidências** e **Screenshots**.
 
 ---
 
-## Passo 9
+# 25. GIT E IA
 
-Merge
-
-```txt
-Merge Pull Request
-```
-
----
-
-## Passo 10
-
-Remover Branch
-
-```txt
-Delete Branch
-```
-
----
-
-# 23. BOAS PRÁTICAS DE PR
-
-PR Pequena:
-
-```txt
-Até 300 linhas
-```
-
-Ideal:
-
-```txt
-Até 150 linhas
-```
-
----
-
-Sempre incluir:
-
-* Objetivo
-* Impacto
-* Evidências
-* Screenshots
-
----
-
-# 24. GIT + IA
-
-A IA aumentou a velocidade de geração de código.
-
-Mas também aumentou:
+A IA aumentou a velocidade de geração de código. Mas também aumentou:
 
 * Bugs
 * Código duplicado
 * Dívida técnica
 
-Git se tornou ainda mais importante.
+Por isso, Git se tornou ainda **mais importante**.
 
----
-
-## Cenário Moderno
-
-```txt
-IA gera código
-↓
-Desenvolvedor valida
-↓
-Commit
-↓
-PR
-↓
-Review
-↓
-Merge
+```mermaid
+flowchart TD
+    A[IA gera código] --> B[Desenvolvedor valida]
+    B --> C[Commit pequeno]
+    C --> D[Pull Request]
+    D --> E[Code Review]
+    E --> F[Merge seguro]
 ```
 
 ---
 
-# 25. COMO USAR IA COM GIT
+# 26. COMO USAR IA COM GIT
 
-Exemplos:
+Ferramentas populares:
 
 ```txt
-Copilot
-ChatGPT
-Claude
-Gemini
-Cursor
-Windsurf
+Copilot · ChatGPT · Claude · Gemini · Cursor · Windsurf
 ```
-
----
 
 Fluxo ideal:
 
-```txt
-IA gera
-↓
-Você revisa
-↓
-Commit pequeno
-↓
-PR pequeno
-↓
-Merge seguro
-```
+> IA gera → Você revisa → Commit pequeno → PR pequeno → Merge seguro
 
 ---
 
-# 26. GITHUB TRENDING
+# 27. GITHUB TRENDING
 
-GitHub Trending mostra:
+O [GitHub Trending](https://github.com/trending) mostra:
 
 * Projetos populares
 * Novas tecnologias
 * Frameworks emergentes
 * Ferramentas promissoras
 
----
+Atalhos úteis:
 
-## Acesso
-
-https://github.com/trending
-
----
-
-## Python
-
-https://github.com/trending/python?since=daily
+* **Python:** https://github.com/trending/python?since=daily
+* **PHP:** https://github.com/trending/php?since=daily
 
 ---
 
-## PHP
+# 28. POR QUE OLHAR O TRENDING?
 
-https://github.com/trending/php?since=daily
+Para aprender **arquitetura**, **padrões** e descobrir **antes do mercado**:
 
----
-
-# 27. POR QUE OLHAR O TRENDING?
-
-Aprender:
-
-* Arquitetura
-* Padrões
-* Open Source
-* Novas tecnologias
-
----
-
-Exemplo:
-
-Você pode descobrir:
-
-* Frameworks
-* Bibliotecas
+* Frameworks e bibliotecas
 * Ferramentas DevOps
-* Agentes IA
+* Agentes de IA
 * MCP Servers
 * SDKs
 
-Meses antes de virarem padrão de mercado.
+---
+
+# 29. LABORATÓRIO PRÁTICO
+
+| # | Exercício | Objetivo |
+| --- | --- | --- |
+| 1 | Criar repositório local | `git init` → `git add` → `git commit` |
+| 2 | Criar branch | `git checkout -b feature/nome` |
+| 3 | Criar `.gitignore` | Ignorar `.env` e `node_modules/` |
+| 4 | Realizar merge | `git merge` |
+| 5 | Criar conflito proposital | Resolver manualmente |
+| 6 | Repositório no GitHub | `push` · `pull` · `clone` |
+| 7 | Criar Pull Request real | Branch → Commit → Push → PR → Review → Approve → Merge |
 
 ---
 
-# 28. LABORATÓRIO PRÁTICO
-
-## Exercício 1
-
-Criar repositório local.
-
-Objetivo:
-
-```txt
-git init
-git add
-git commit
-```
-
----
-
-## Exercício 2
-
-Criar branch.
-
-Objetivo:
-
-```txt
-git checkout -b feature/nome
-```
-
----
-
-## Exercício 3
-
-Realizar merge.
-
-Objetivo:
-
-```txt
-git merge
-```
-
----
-
-## Exercício 4
-
-Criar conflito proposital.
-
-Resolver manualmente.
-
----
-
-## Exercício 5
-
-Criar repositório GitHub.
-
-Realizar:
-
-```txt
-push
-pull
-clone
-```
-
----
-
-## Exercício 6
-
-Criar Pull Request real.
-
-Fluxo completo:
-
-```txt
-Branch
-Commit
-Push
-PR
-Review
-Approve
-Merge
-```
-
----
-
-# 29. RESUMO FINAL
+# 30. RESUMO FINAL
 
 Todo desenvolvedor deve dominar:
 
-✅ git init
-
-✅ git status
-
-✅ git add
-
-✅ git commit
-
-✅ git log
-
-✅ git diff
-
-✅ git branch
-
-✅ git checkout
-
-✅ git merge
-
-✅ git clone
-
-✅ git pull
-
-✅ git push
-
-✅ Pull Request
-
-✅ Code Review
-
-✅ Resolução de Conflitos
-
-✅ GitHub Trending
+| | | |
+| --- | --- | --- |
+| ✅ `git init` | ✅ `git status` | ✅ `git add` |
+| ✅ `git commit` | ✅ `git log` | ✅ `git diff` |
+| ✅ `.gitignore` | ✅ `git branch` | ✅ `git checkout` |
+| ✅ `git merge` | ✅ `git clone` | ✅ `git pull` |
+| ✅ `git push` | ✅ Pull Request | ✅ Code Review |
+| ✅ Resolução de Conflitos | ✅ GitHub Trending | |
 
 ---
 
-# FRASE FINAL
-
-"Amadores escrevem código.
-Profissionais versionam código."
+<p align="center"><em>"Amadores escrevem código. Profissionais versionam código."</em></p>
 
 ---
 
-# Autor
+## 👨‍💻 Autor
 
 **Autor do Treinamento:** Icaro William
 
